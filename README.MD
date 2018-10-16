@@ -69,6 +69,7 @@ In this tutorial, you will learn how to use the esp32-azure-kit board to send da
     | MagnetometerZ | MagnetometerZ | mgauss|               |               |
     | Pitch         | Pitch         |   °   |     -180      |       180     |
     | Roll          | Roll          |   °   |     -180      |       180     |
+
     >Note: You can only add the measurements that you care about, you don't need to add all of them 
 
 6. Click **Device Explorer** -> **+** -> **Real** to add a real device. After creating the device, it will navigate to the device template page. 
@@ -92,6 +93,7 @@ In this tutorial, you will learn how to use the esp32-azure-kit board to send da
     | Display Name  | Field Name    | Unit  | Minimum Value | Maximum Value | Initial Value |
     | ------------- |:------------- |:-----:|:-------------:|:-------------:|:-------------:|
     | Fan Speed     | fanSpeed      |   %   |     10        |       100     |       50      |
+    
     Click **Save** and repeat this step to add the follwing properties
 
     |       Display Name    | Field Name    | Unit  | Minimum Value | Maximum Value | Initial Value |
