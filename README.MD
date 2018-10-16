@@ -57,6 +57,7 @@ In this tutorial, you will learn how to use the esp32-azure-kit board to send da
     ![IoT Central, add measurement](images/new-measurement.png)
 
 5. Create new **Telemetry** as below:
+
     | Display Name  | Field Name    | Unit  | Minimum Value | Maximum Value |
     | ------------- |:------------- |:-----:|:-------------:|:-------------:|
     | Temperature   | Temperature   |   ℃  |     -40       |       100     |
@@ -93,7 +94,7 @@ In this tutorial, you will learn how to use the esp32-azure-kit board to send da
     | Display Name  | Field Name    | Unit  | Minimum Value | Maximum Value | Initial Value |
     | ------------- |:------------- |:-----:|:-------------:|:-------------:|:-------------:|
     | Fan Speed     | fanSpeed      |   %   |     10        |       100     |       50      |
-    
+
     Click **Save** and repeat this step to add the follwing properties
 
     |       Display Name    | Field Name    | Unit  | Minimum Value | Maximum Value | Initial Value |
