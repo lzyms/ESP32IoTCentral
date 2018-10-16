@@ -1,0 +1,9 @@
+.settings.xml
+.monitor
+.DS_Store
+
+*~
+#*.swp
+
+node_modules/
+build/

@@ -1,0 +1,38 @@
+{
+    "folders": [
+        {
+            "path": "Device"
+        }
+    ],
+    "settings": {
+        "IoTWorkbench.BoardId": "esp32",
+        "IoTWorkbench.DevicePath": "Device",
+        "files.associations": {
+            "iothub_client.h": "c",
+            "xlogging.h": "c",
+            "base64.h": "c",
+            "iothub_client_core.h": "c",
+            "iothub_client_core_ll.h": "c",
+            "iothubtransport.h": "c",
+            "iothub_client_private.h": "c",
+            "iothub_client_private.h\u0000vate.h": "c",
+            "iothub_client_authorization.h": "c",
+            "iothub_transport_ll.h": "c",
+            "iothub_client_options.h": "c",
+            "iothub_client_version.h": "c",
+            "stdint.h": "c",
+            "iothub_client_version.h\u0000sion.h": "c",
+            "iothub_client_ll.h": "c",
+            "iothub_message.h": "c",
+            "iothubtransport.h\u0000port.h": "c",
+            "vector.h": "c",
+            "iothub_client_core.h\u0000core.h": "c",
+            "iothub_client_retry_control.h": "c",
+            "iothubtransport_mqtt_common.h": "c",
+            "tlsio.h": "c",
+            "inttypes.h": "c",
+            "mqtt_codec.h": "c",
+            "iot_ssd1306.h": "c"
+        }
+    }
+}
