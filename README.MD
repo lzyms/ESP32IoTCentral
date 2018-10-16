@@ -77,7 +77,7 @@ In this tutorial, you will learn how to use the esp32-azure-kit board to send da
 
     ![IoT Central, add real device](images/add-real-device.png)
 
-7. Click the **Properties** tab, then click **Edit Tempalte**. Select **Number** on the Liabray at the left of th page, then add the following properties
+7. Click the **Properties** tab, then click **Edit Tempalte**. Select **Number** on the Liabray at the left of the page, then add the following properties
 
     | Display Name  | Field Name    |
     | ------------- |:-------------:|
@@ -102,6 +102,7 @@ In this tutorial, you will learn how to use the esp32-azure-kit board to send da
     | Temperature Threshold | temThreshold  |  ℃   |      -40      |       100     |       30      |
 
     Click the  **Commands** tab again, then click **Edit Tempalte**. Click **New Command** at the left of the page, then add the following properties
+
     | Display Name  | Field Name    | Data Type     |
     | ------------- |:-------------:|:-------------:|
     |   Start Fan   |   startFan    |    text       |
@@ -127,7 +128,7 @@ In this tutorial, you will learn how to use the esp32-azure-kit board to send da
 	const char* password = "";
     ```
 
-2. Copy and paste the device connection string generated on the previous step into the following line in device code.
+2. Copy and paste the device connection string that generated on the previous step into the following line in device code.
 	
    This copies the connection string that is retrieved from the `Create Azure IoT Central application` step.
 
