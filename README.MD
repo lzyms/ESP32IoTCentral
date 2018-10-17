@@ -38,7 +38,7 @@ In this tutorial, you will learn how to use the esp32-azure-kit board to send da
 
 - Then the **IoT Workbench Example** window is shown up.
 
-    ![IoT Workbench, Examples window](images/iot-workbench-examples.png)
+    ![IoT Workbench, Examples window](images/iot-workbench-examples.jpg)
 
 - Find **ESP32 IoT Contral Sample** and click **Open Sample** button. A new VS Code window with a project folder in it opens.
 
