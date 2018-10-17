@@ -61,7 +61,7 @@ In this tutorial, you will learn how to use the esp32-azure-kit board to send da
     | Display Name  | Field Name    | Unit  | Minimum Value | Maximum Value |
     | ------------- |:------------- |:-----:|:-------------:|:-------------:|
     | Temperature   | Temperature   |   ℃  |     -40       |       100     |
-    | Humidity      | Humidity      |   ℃  |       0       |       100     |
+    | Humidity      | Humidity      |    %  |       0       |       100     |
     | Light         | AmbientLight  |   lx  |       0       |       3800    |
     | Pressure      | Pressure      |  kPa  |      26       |       126     |
     | Altitude      | Altitude      |   M   |               |               |
@@ -77,17 +77,23 @@ In this tutorial, you will learn how to use the esp32-azure-kit board to send da
 
     ![IoT Central, add real device](images/add-real-device.png)
 
-7. Click the **Properties** tab, then click **Edit Tempalte**. Select **Number** on the Liabray at the left of the page, then add the following properties
+7. Click the **Properties** tab, then click **Edit Tempalte**. Select **Device Property** on the Liabray at the left of the page, then add the following properties
 
-    | Display Name  | Field Name    |
-    | ------------- |:-------------:|
-    | Dice Number   | dieNumber     |
+    | Display Name  | Field Name    | Data Type     |
+    | ------------- |:-------------:|:-------------:|
+    | Dice Number   | dieNumber     | number        |
 
 8. Click the **Commands** tab, then click **Edit Tempalte**. Click **New Command** at the left of the page, then add the following properties
 
     | Display Name  | Field Name    | Data Type     |
     | ------------- |:-------------:|:-------------:|
     |   Message     |   echo        |    text       |
+
+   Click **+** at the right of **Input Fields** to add the following field
+
+    | Display Name                 | Field Name              | Data Type     |
+    | ---------------------------- |:-----------------------:|:-------------:|
+    |   Send message to device     |   displayedValue        |    text       |
 
 9. Click the **Settings** tab, then click **Edit Tempalte**. Select **Number** on the Liabray at the left of th page, then add the following properties
 
@@ -166,7 +172,7 @@ In this tutorial, you will learn how to use the esp32-azure-kit board to send da
 
     ![IoT Central: measurments](images/iot-central-measurement.jpg)
 
-4. Navigate to the device **Commands** page, write a message at the **Message** grid and click **Run**, the message will display on the dvice screen. 
+4. Navigate to the device **Commands** page, write a message at the **Message** grid and click **Run**, the message will display on the device screen. 
 
     ![IoT Central: message](images/iot-central-message.jpg)
     >Note: Click the **KEY_IO0** button on the device will switch the messaage screen to humiture screen
