@@ -19,7 +19,7 @@
 #define BUTTON_IO_NUM  0
 #define BUTTON_ACTIVE_LEVEL   0
 
-#define SHAKE_THRESHOLD 4
+#define SHAKE_THRESHOLD 2
 
 static i2c_bus_handle_t i2c_bus = NULL;
 static hts221_handle_t hts221 = NULL;
@@ -215,7 +215,7 @@ float get_ambientLight()
     return bh1750_data;
 }
 
-void get_pitch_roll(int *pitch, int *roll)
+void get_pitch_roll_accel(int *pitch, int *roll, int *accelX, int *accelY, int *accelZ)
 {
     mpu6050_acceleration_t result;
     int16_t norm_accel_x;
@@ -227,7 +227,10 @@ void get_pitch_roll(int *pitch, int *roll)
     norm_accel_x = result.accel_x * range_per_digit * 9.80665f;
     norm_accel_y = result.accel_y * range_per_digit * 9.80665f;
     norm_accel_z = result.accel_z * range_per_digit * 9.80665f;
-
+    *accelX = norm_accel_x;
+    *accelY = norm_accel_y;
+    *accelZ = norm_accel_z;
+    
     *pitch = -(atan2(norm_accel_x, 
             sqrt(norm_accel_y * norm_accel_y + norm_accel_z * norm_accel_z)) * 180.0) / 3.1415;
     *roll = (atan2(norm_accel_y, norm_accel_z) * 180.0) / 3.1415;
@@ -260,29 +263,19 @@ void get_magnetometer(int *magnetometerX, int *magnetometerY, int *magnetometerZ
     *magnetometerZ = z;
 }
 
-bool check_for_shake()
+bool check_for_shake(int accelX, int accelY, int accelZ)
 {
     bool shake = false;
-    mpu6050_acceleration_t result;
-    int16_t norm_accel_x;
-    int16_t norm_accel_y;
-    int16_t norm_accel_z;
 
-    mpu6050_get_acceleration(mpu6050, &result);
-
-    norm_accel_x = result.accel_x * range_per_digit * 9.80665f;
-    norm_accel_y = result.accel_y * range_per_digit * 9.80665f;
-    norm_accel_z = result.accel_z * range_per_digit * 9.80665f;
-
-    int speed = abs(norm_accel_x + norm_accel_y + norm_accel_z - last_x - last_y - last_z);
+    int speed = abs(accelX + accelY + accelZ - last_x - last_y - last_z);
     if (speed > SHAKE_THRESHOLD)
     {
         shake = true;
     }
 
-    last_x = norm_accel_x;
-    last_y = norm_accel_y;
-    last_z = norm_accel_z;
+    last_x = accelX;
+    last_y = accelY;
+    last_z = accelZ;
 
     return shake;
 }

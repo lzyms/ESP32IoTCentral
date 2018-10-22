@@ -8,7 +8,6 @@
 #include "src/led.h"
 
 #define TELEMETRY_INTERVAL 1000
-#define SET_SENSOR_STATE_INTERVAL 2000
 
 // Please input the SSID and password of WiFi
 const char *ssid = "";
@@ -208,7 +207,7 @@ static void deviceTwinCallback(DEVICE_TWIN_UPDATE_STATE update_state, const unsi
         int partialValue = (uint8_t)json_object_dotget_number(partialObject, "value");
 
         (void)sprintf_s(propText, sizeof(propText),
-                        "{\"%s\":{\"value\":%d,\"desiredVersion\":%d}}",
+                        "{\"%s\":{\"value\":%d,\"status\":\"completed\",\"desiredVersion\":%d}}",
                         partialName, partialValue, version);
 
         sendReportedProperty(propText);
@@ -253,7 +252,7 @@ static void deviceTwinCallback(DEVICE_TWIN_UPDATE_STATE update_state, const unsi
           Serial.println(" either not found in reported or versions do not match.");
 
           (void)sprintf_s(propText, sizeof(propText),
-                          "{\"%s\":{\"value\":%d,\"desiredVersion\":%d}}",
+                          "{\"%s\":{\"value\":%d,\"status\":\"completed\",\"desiredVersion\":%d}}",
                           itemName, value, version);
           sendReportedProperty(propText);
         }
@@ -356,10 +355,8 @@ static void reportedStateCallback(int status_code, void *userContextCallback)
   Serial.println(status_code);
 }
 
-static void SetSensorState()
+static void SetSensorState(float temperature)
 {
-  float temperature = get_temperature();
-
   if (temperature < temThreshold)
   {
     if (fan_running && !fan_running_with_command)
@@ -375,14 +372,6 @@ static void SetSensorState()
       start_motor_with_speed(fanSpeed);
       fan_running = true;
     }
-  }
-
-  if (check_for_shake())
-  {
-    int die = rand() % 6 + 1;
-    (void)sprintf_s(propText, sizeof(propText),
-                    "{\"dieNumber\":%d}", die);
-    sendReportedProperty(propText);
   }
 }
 
@@ -446,11 +435,11 @@ void loop()
       float temperature = get_temperature();
       float humidity = get_humidity();
       float ambientLight = get_ambientLight();
-      int pitch = 0, roll = 0;
+      int pitch = 0, roll = 0, accelX = 0, accelY = 0, accelZ = 0;
       float pressure, altitude;
       int magnetometerX = 0, magnetometerY = 0, magnetometerZ = 0;
 
-      get_pitch_roll(&pitch, &roll);
+      get_pitch_roll_accel(&pitch, &roll, &accelX, &accelY, &accelZ);
       get_pressure_altitude(&pressure, &altitude);
       get_magnetometer(&magnetometerX, &magnetometerY, &magnetometerZ);
 
@@ -467,14 +456,18 @@ void loop()
         oled_update_humiture(temperature, humidity);
       }
 
-      sendTelemetry(msgText);
-      send_interval_ms = millis();
-    }
+      if (check_for_shake(accelX,accelY,accelZ))
+      {
+        int die = rand() % 6 + 1;
+        (void)sprintf_s(propText, sizeof(propText),
+                          "{\"dieNumber\":%d}", die);
+        sendReportedProperty(propText);
+      }
 
-    if ((int)(millis() - check_interval_ms) >= SET_SENSOR_STATE_INTERVAL)
-    {
-      SetSensorState();
-      check_interval_ms = millis();
+      SetSensorState(temperature);      
+      sendTelemetry(msgText);
+
+      send_interval_ms = millis();
     }
   }
   delay(10);
