@@ -23,26 +23,26 @@ In this tutorial, you will learn how to use the esp32-azure-kit board to send da
 ### Start VS Code
 
 - Start Visual Studio Code.
-- Make sure [Azure IoT Workbench](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-iot-workbench) is installed.
+- Make sure [Azure IoT Device Workbench](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-iot-workbench) is installed.
 - Connect ESP32-azure-kit to your PC.
 
 ### Open IoT Workbench Examples
 
-- Use `F1` or `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) to open the command palette, type **IoT Workbench**, and then select **IoT Workbench: Examples**.
+- Use `F1` or `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) to open the command palette, type **Azure IoT Device Workbench**, and then select **Open Examples...**.
 
-    ![IoT Workbench: Examples](images/iot-workbench-examples-cmd.png)
+    ![IoT Device Workbench: Examples](images/iot-workbench-examples-cmd.png)
 
 - Select **ESP32 Arduino**.
 
-    ![IoT Workbench: Examples -> Select board](images/iot-workbench-examples-board.png)
+    ![IoT Device Workbench: Examples -> Select board](images/iot-workbench-examples-board.png)
 
-- Then the **IoT Workbench Example** window is shown up.
+- Then the **IoT Device Workbench Example** window is shown up.
 
-    ![IoT Workbench, Examples window](images/iot-workbench-examples.jpg)
+    ![IoT Device Workbench, Examples window](images/iot-workbench-examples.jpg)
 
 - Find **ESP32 IoT Contral Sample** and click **Open Sample** button. A new VS Code window with a project folder in it opens.
 
-    ![IoT Workbench, select ESP32 IoT Contral Sample example](images/open-example-esp32-iot-central.jpg)
+    ![IoT Device Workbench, select ESP32 IoT Contral Sample example](images/open-example-esp32-iot-central.jpg)
 
 ## Create Azure IoT Central application
 
@@ -147,13 +147,13 @@ In this tutorial, you will learn how to use the esp32-azure-kit board to send da
 
 ## Build and upload the device code
 
-1. Open the command palette and select **IoT Workbench: Device**, then select **Device Upload**.
+1. Open the command palette and select **Azure IoT Device Workbench: Upload Device Code**.
 
-	![IoT Workbench: Device -> Upload](images/iot-workbench-device-upload.png)
+	![IoT Device Workbench: Device -> Upload](images/iot-workbench-device-upload.png)
 
 2. VS Code then starts verifying and uploading the code to your DevKit.
 
-	![IoT Workbench: Device -> Uploaded](images/esp32-device-uploaded.png)
+	![IoT Device Workbench: Device -> Uploaded](images/esp32-device-uploaded.png)
 
 3. The ESP32 device reboots and starts running the code.
 
